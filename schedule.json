@@ -1,0 +1,301 @@
+{
+  "shift_1": {
+    "classes": ["1-A", "1-B", "1-D", "2-A", "2-B", "2-D", "3-A", "8-A", "8-B", "9-A", "9-B", "9-D", "10-A", "10-B", "11-A", "11-B"],
+    "teachers": {
+      "1-A": "Mirzayeva U.", "1-B": "Hamroyeva Sh.", "1-D": "Kasimova M.", "2-A": "Nadjimxadjayeva Z.",
+      "2-B": "Ruzimova Z.", "2-D": "Radjabova X.", "3-A": "Shanazarova T.", "8-A": "Avganova G.",
+      "8-B": "Raxmatova M.", "9-A": "Madaminova Z.", "9-B": "Usmanova B.", "9-D": "Ergashev X.",
+      "10-A": "Abdullajonov A.", "10-B": "To'xtayev J.", "11-A": "Urmanova Z.", "11-B": "Shodmonova Yu."
+    },
+    "rooms": {
+      "8-A": "13", "8-B": "19", "9-A": "15", "9-B": "23", "9-D": "17", "10-A": "25", "10-B": "14", "11-A": "18", "11-B": "24"
+    },
+    "schedule": {
+      "1-A": [
+        ["Kelajak soati", "Ingliz tili", "Matematika", "Alifbe", "Yozuv", "—"],
+        ["Musiqa", "Matematika", "Alifbe",  "Yozuv", "—"],
+        ["Matematika", "Tabiiy fan", "Informatika", "Tasviriy san'at", "Tarbiya", "—"],
+        ["Matematika", "Jismoniy tarbiya", "Alifbe", "Yozuv", "—", "—"],
+        ["Alifbe", "Yozuv", "Matematika", "Texnologiya", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "1-B": [
+        ["Kelajak soati", "Matematika", "Ingliz tili", "Tarbiya", "Jismoniy Tarbiya", "—"],
+        ["Matematika", "Musiqa", "Alifbe", "Yozuv", "—", "—"],
+        ["Alifbe", "Yozuv", "Matematika", "Texnologiya", "Informatika", "—"],
+        ["Alifbe", "Yozuv", "Matematika", "Tabiiy fan", "—", "—"],
+        ["Alifbe", "Yozuv", "Matematika", "Tasviriy san'at", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "1-D": [
+        ["Kelajak soati", "Matematika", "Alifbe", "Ingliz tili", "Yozuv", "—"],
+        ["Matematika", "Alifbe", "Musiqa", "Yozuv", "—", "—"],
+        ["Matematika", "Texnologiya", "Informatika", "Jismoniy tarbiya", "Tarbiya", "—"],
+        ["Alifbe", "Yozuv", "Matematika", "Tabiiy fan", "—", "—"],
+        ["Alifbe", "Yozuv", "Matematika", "Tasviriy san'at", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "2-A": [
+        ["Kelajak soati", "Rus tili", "Matematika", "Ona tili", "Jismoniy tarbiya", "—"],
+        ["Matematika", "Ingliz tili", "Ona tili", "Musiqa", "O'qish", "—"],
+        ["Matematika", "Ona tili", "Informatika", "Jismoniy tarbiya", "Tabiiy fan", "—"],
+        ["O'qish", "Matematika", "Ingliz tili", "Rus tili", "Tarbiya", "—"],
+        ["Ona tili", "Matematika", "O'qish", "Tasviriy san'at", "Texnologiya", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "2-B": [
+        ["Kelajak soati", "Jismoniy tarbiya", "Rus tili", "Matematika", "Ona tili", "—"],
+        ["Matematika", "Ona tili", "Ingliz tili", "O'qish", "Texnologiya", "—"],
+        ["Matematika", "Ona tili", "Jismoniy tarbiya", "Informatika", "Tasviriy san'at", "—"],
+        ["Matematika", "Ingliz tili", "Ona tili", "O'qish", "Rus tili", "—"],
+        ["Ona tili", "Matematika", "Musiqa", "O'qish", "Tabiiy fan", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "2-D": [
+        ["Kelajak soati", "Matematika", "Jismoniy tarbiya", "Rus tili", "Ona tili", "—"],
+        ["Matematika", "Ona tili", "O'qish", "Ingliz tili", "Texnologiya", "—"],
+        ["Matematika", "Jismoniy tarbiya", "Informatika", "Ona tili", "Tasviriy san'at", "—"],
+        ["O'qish", "Matematika", "Rus tili", "Tarbiya", "Ingliz tili", "—"],
+        ["Musiqa", "Matematika", "Ona tili", "O'qish", "Tabiiy fan", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "3-A": [
+        ["Kelajak soati", "Matematika", "Ingliz tili", "Ona tili", "O'qish", "—"],
+        ["Matematika", "Jismoniy tarbiya", "O'qish", "Tarbiya", "Tasviriy san'at", "—"],
+        ["Matematika", "Ingliz tili", "Ona tili", "Informatika", "Rus tili", "—"],
+        ["Matematika", "Ona tili", "Jismoniy tarbiya", "O'qish", "Texnologiya", "—"],
+        ["Matematika", "Rus tili", "Ona tili", "Musiqa", "Tabiiy fan", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "8-A": [
+        ["Kelajak soati", "Texnologiya", "Algebra)", "Geografiya", "Adabiyot", "Rus tili"],
+        ["Ingliz tili)", "Biologiya", "Kimyo", "Geometriya)", "Chizmachilik", "Tarbiya"],
+        ["Davlat va Xuquq asoslari)", "Tarix", "Informatika)", "Ona tili)", "Algebra", "Jismoniy tarbiya"],
+        ["Ona tili", "Ingliz tili", "Fizika", "Geografiya", "Tarix", "—"],
+        ["Biologiya", "Jismoniy tarbiya", "Rus tili", "Geometriya", "Adabiyot", "Fizika"],
+        ["Tarix", "Ona tili", "Ingliz tili", "Kimyo", "Algebra", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "8-B": [
+        ["Kelajak soati ", "Algebra", "Texnologiya ", "Adabiyot ", "Geografiya ", "Jismoniy tarbiya"],
+        ["Biologiya ", "Tarix", "Geometriya", "Chizmachilik ", "Kimyo", "—"],
+        ["Rus tili ", "Ona tili", "Huquq ", "Algebra ", "Ingliz tili", "—"],
+        ["Tarbiya ", "Fizika", "Ona tili ", "Kimyo ", "Geografiya / Iqtisod", "Adabiyot", "Ingliz tili"],
+        ["Informatika", "Geometriya", "Jismoniy tarbiya ", "Biologiya ", "Rus tili ", "Tarix"],
+        ["Algebra", "Fizika", "Ona tili", "Ingliz tili", "Tarix", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "9-A": [
+        ["Kelajak soati", "Algebra", "Adabiyot", "Jismoniy tarbiya", "Biologiya", "Ingliz tili"],
+        ["Geografiya", "Geometriya", "Tarix", "Kimyo", "Ingliz tili", "Chizmachilik"],
+        ["Tarix", "Texnologiya", "Ona tili", "Algebra", "Informatika", "Davlat va Huquq"],
+        ["Rus tili", "Tarbiya", "Geografiya", "Fizika", "Ona tili", "Ingliz tili"],
+        ["Geometriya", "Fizika", "Biologiya", "Adabiyot", "Jismoniy tarbiya", "Informatika"],
+        ["Kimyo", "Tarix", "Algebra", "Rus tili", "Ona tili", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "9-B": [
+        ["Kelajak soati ", "Adabiyot ", "Geografiya", "Informatika ", "Texnologiya ", "Algebra" , "Ingliz tili" ],
+        ["Tarix ", "Chizmachilik ", "Jismoniy tarbiya ", "Biologiya", "Geometriya ", "Ingliz tili"],
+        ["Ona tili ", "Algebra", "Tarix ", "Informatika", "Davlat va Xuquq", "—"],
+        ["Kimyo ", "Rus tili ", "Tarbiya ", "Adabiyot ", "Ingliz tili", "Geografiya / Iqtisod"],
+        ["Tarix", "Biologiya", "Ona tili", "Fizika", "Geometriya", "Jismoniy tarbiya"],
+        ["Fizika ", "Kimyo", "Algebra", "Ona tili", "Rus tili", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "9-D": [
+        ["Kelajak soati", "Geografiya", "Algebra", "Biologiya", "Adabiyot", "—", "—"],
+        ["Chizmachilik", "Kimyo", "Fizika", "Geometriy", "Tarix", "Jismoniy tarbiya" ,"Ingliz tili"],
+        ["Informatika", "Algebra", "Ona tili", "Tarix", "Texnologiya", "Ingliz tili"],
+        ["Fizika", "Tarix", "Ona tili", "Tarbiya", "Adabiyot", "Jismoniy tarbiya" , "—"],
+        ["Rus tili", "Geometriy", "Ona tili", "Informatika", "Biologiya", "Davlat va Huquq" , "—"],
+        ["Rus tili", "Geografiya", "Kimyo", "Algebra", "Ingliz tili", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "10-A": [
+        ["Kelajak soati", "Chaqiruv", "Adabiyot", "Algebra", "Informatika" , "—"],
+        ["Tarbiya", "Ingliz tili", "Geometriya", "Jismoniy tarbiya", "Biologiya", "—", "—"],
+        ["Chaqiruv", "Informatika", "Algebra", "Rus tili", "Ona tili", "—", "—"],
+        ["Ingliz", "Geografiya", "Kimyo", "Jismoniy tarbiya", "Biologiya", "Ona tili" , "—"],
+        ["Davlat va Xuquq", "Tarix", "Geometriya", "Rus tili", "Fizika", "Adabiyot" , "—"],
+        ["Geografiya", "Algebra", "Fizika", "Tarix", "Kimyo", "—" , "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "10-B": [
+        ["Kelajak soati", "Informatika", "Chaqiruv", "Kimyo", "Algebra", "—", "—"],
+        ["Fizika", "Geometriya", "Biologiya", "Tarbiya", "Jismoniy tarbiya", "—", "—"],
+        ["Ingliz tili", "Rus tili", "Algebra", "Ona tili", "Tarix", "—", "—"],
+        ["Geografiya", "Kimyo", "Biologiya", "Adabiyot", "Jismoniy tarbiya", "Tarix", "—"],
+        ["Geometriy", "Informatika", "Fizika", "Davlat va Huquq", "Ona tili", "Chaqiruv", "—"],
+        ["Ingliz tili", "Algebra", "Rus tili", "Geografiya", "Adabiyot", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "11-A": [
+        ["Kelajak soati", "Biologiya", "Informatika", "Chaqiruv", "Algebra", "Adabiyot" , "—"],
+        ["Geometriya", "Fizika", "Ingliz tili", "Chaqiruv", "Ona tili", "Rus tili"],
+        ["Algebra", "Jismoniy tarbiya", "Ingliz tili", "Davlat va Xuquq", "Ona tili", "Rus tili"],
+        ["Algebra", "Algebra", "Ona tili", "Kimyo", "Chaqiruv", "Tadbirkorlik"],
+        ["Fizika", "Ona tili", "Informatika", "Geometriya", "Chaqiruv", "Adabiyot", "—"],
+        ["Algebra", "Rus tili", "Tarix", "Astronomiya", "Tadbirkorlik asoslari", "Ingliz tili", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "11-B": [
+        ["Kelajak soati", "Geometriya", "Algebra", "Biologiya", "Ona tili", "Adabiyot"],
+        ["Kimyo", "Tarbiya", "Huquq", "Adabiyot", "Chaqiruv", "Ingliz tili"],
+        ["Biologiya", "Informatika", "Rus tili", "Ingliz tili", "Geometriya", "Tadbirkorlik"],
+        ["Algebra", "Algebra", "Ingliz tili", "Jismoniy tarbiya", "Jismoniy tarbiya", "Algebra"],
+        ["Chaqiruv", "Fizika", "Jismoniy tarbiya", "Kimyo", "Informatika", "Astronomiya"],
+        ["Rus tili", "Tarix", "Informatika", "Kimyo", "Tarix", "Tarix"],
+        ["—", "—", "—", "—", "—", "—"]
+      ]
+    }
+  },
+  "shift_2": {
+    "classes": ["3-B", "3-D", "4-A", "4-B", "4-D", "5-A", "5-B", "5-D", "6-A", "6-B", "6-D", "7-A", "7-B", "7-D"],
+    "teachers": {
+      "3-B": "Usmanova I.", "3-D": "Muhiddinova N.", "4-A": "Niyazmetova M.B.", "4-B": "Kuldasheva S.X.",
+      "4-D": "Primqulova E.", "5-A": "Xushmurodova G.", "5-B": "Ergasheva N.", "5-D": "Shoqulov F.",
+      "6-A": "Almatov E.", "6-B": "Xadjimuratova D.", "6-D": "Orifov O.", "7-A": "Abdiraxmonov A.",
+      "7-B": "Norqo'chqorova R.", "7-D": "Xolmurodova K."
+    },
+    "rooms": {
+      "5-A": "19", "5-B": "13", "5-D": "15", "6-A": "14", "6-B": "24", "6-D": "23", "7-A": "17", "7-B": "18", "7-D": "25"
+    },
+    "schedule": {
+      "3-B": [
+        ["Kelajak soati", "Jismoniy tarbiya", "Ona tili", "Matematika", "Informatika", "—","—"],
+        ["Matematika", "Musiqa", "Ingliz tili", "O'qish", "Tarbiya", "—","—"],
+        ["Rus tili", "Matematika", "Jismoniy tarbiya", "Ona tili", "Texnologiya","—", "—"],
+        ["Matematika", "Ona tili", "Tabiiy fan", "O'qish", "Ingliz tili", "—", "—"],
+        ["Matematika", "Ona tili", "O'qish", "Tasviriy san'at", "Rus tili", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "3-D": [
+        ["Kelajak soati", "Matematika", "Ona tili", "Jismoniy tarbiya", "O'qish", "—","—"],
+        ["Ingliz tili", "Matematika", "Ona tili", "Ingliz tili", "Tarbiya", "—","—"],
+        ["Matematika", "Rus tili", "O'qish", "Texnologiya", "Tabiiy fan", "—", "—"],
+        ["Matematika", "Jismoniy tarbiya", "Ona tili", "O'qish", "Ingliz tili", "—", "—"],
+        ["Matematika", "Musiqa", "Ona tili", "Rus tili", "Tasviriy san'at", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "4-A": [
+        ["Kelajak soati", "Matematika", "Jismoniy tarbiya", "Ingliz tili", "Ona tili", "—" ,"—"],
+        ["Ona tili", "Matematika", "O'qish", "Informatika", "Tarbiya", "—","—"],
+        ["Matematika", "Ingliz tili", "Rus tili", "Jismoniy tarbiya", "O'qish", "—", "—"],
+        ["Matematika", "Ona tili", "Texnologiya", "Tabiiy fan", "Tasviriy san'at", "—", "—"],
+        ["Matematika", "Ona tili", "Rus tili", "O'qish", "Musiqa", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "4-B": [
+        ["Kelajak soati", "Matematika", "Ingliz tili", "Tasviriy san'at", "Rus tili", "—","—"],
+        ["Ona tili", "Matematika", "O'qish", "Informatika", "Texnologiya","—", "—"],
+        ["Matematika", "Jismoniy tarbiya", "O'qish", "Rus tili", "Ona tili", "—", "—"],
+        ["Ingliz tili", "Matematika", "Ona tili", "Tabiiy fan", "Jismoniy tarbiya", "—", "—"],
+        ["Matematika", "Ona tili", "O'qish", "Musiqa", "Tarbiya", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "4-D": [
+        ["Kelajak soati", "Ingliz tili", "Matematika", "Ona tili", "Tarbiya", "—","—"],
+        ["Matematika", "Jismoniy tarbiya", "Ona tili", "O'qish", "Texnologiya","—", "—"],
+        ["Matematika", "O'qish", "Informatika", "Tabiiy fan", "Rus tili", "—", "—"],
+        ["Matematika", "Ingliz tili", "Ona tili", "O'qish", "Tasviriy san'at", "—", "—"],
+        ["Rus tili", "Jismoniy tarbiya ", "Musiqa", "Matematika", "Ona tili", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "5-A": [
+        ["Kelajak soati", "Rus tili", "Ona tili", "Matematika", "Tabiiy fan", "—","—"],
+        ["Musiqa", "Ingliz tili", "Jismoniy tarbiya", "Tarix", "Matematika", "—","—"],
+        ["Ona tili", "Matematika", "Ingliz tili", "Adabiyot", "Informatika", "—", "—"],
+        ["Texnologiya", "Texnologiya", "Ingliz tili", "Tasviriy san'at", "Tarix", "—", "—"],
+        ["Tabiiy fan", "Jismoniy tarbiya", "Matematika", "Ona tili", "Tarbiya", "—", "—"],
+        ["Rus tili", "Ona tili", "Ingliz tili", "Matematika", "Adabiyot", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "5-B": [
+        ["Kelajak soati", "Matematika", "Rus tili", "Tabiiy fan", "Jismoniy tarbiya", "—","—"],
+        ["Matematika", "Matematika", "Matematika", "Tabiiy fan", "Tabiiy fan", "Matematika"],
+        ["Ingliz tili", "Matematika", "Musiqa", "Tarix", "Ona tili", "Informatika", "—"],
+        ["Ona tili", "Tabiiy fan", "Adabiyot", "Ingliz tili", "Tasviriy san'at", "—", "—"],
+        ["Matematika", "Ona tili", "Adabiyot", "Tarbiya", "—", "—", "—"],
+        ["Ingliz tili", "Matematika", "Rus tili", "Ona tili", "Tarix", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "5-D": [
+        ["Kelajak soati", "Ona tili", "Matematika", "Adabiyot", "Ingliz tili", "—", "—"],
+        ["Matematika", "Tabiiy fan", "Ingliz tili", "Tasviriy san'at", "Tarix", "—", "—"],
+        ["Matematika", "Musiqa", "Ona tili", "Ingliz tili", "Tarbiya", "Jismoniy tarbiya", "—"],
+        ["Tarix", "Adabiyot", "Rus tili", "Texnologiya", "Texnologiya", "—", "—"],
+        ["Ona tili","Tabiiy fan", "Matematika", "Jismoniy tarbiya", "Informatika", "—", "—"],
+        ["Matematika", "Rus tili", "Ona tili", "Ingliz tili", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "6-A": [
+        ["Kelajak soati", "Ingliz tili", "Matematika", "Tabiiy fan", "Adabiyot", "Informatika", "—"],
+        ["Tabiiy fan", "Matematika", "Tarix", "Jismoniy tarbiya", "Tasviriy san'at", "—", "—"],
+        ["Ingliz tili", "Ona tili", "Matematika", "Texnologiya", "Texnologiya", "Tarix", "—"],
+        ["Rus tili", "Ingliz tili", "Jismoniy tarbiya", "Ona tili", "Adabiyot", "—", "—"],
+        ["Musiqa", "Rus tili", "Tarbiya", "Matematika", "Ona tili", "—", "—"],
+        ["Ona tili", "Tabiiy fan", "Matematika", "Ingliz tili", "—", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "6-B": [
+        ["Kelajak soati", "Matematika", "Tabiiy fan", "Ona tili", "Adabiyot", "—", "—"],
+        ["Tarix", "Jismoniy tarbiya", "Matematika", "Ingliz tili", "Musiqa", "—", "—"],
+        ["Ona tili", "Texnologiya", "Texnologiya", "Matematika", "Ingliz tili", "—", "—"],
+        ["Ingliz tili", "Tabiiy fan", "Tasviriy san'at", "Tarix", "Rus tili", "Jismoniy tarbiya", "—"],
+        ["Matematika", "Tarbiya", "Ona tili", "Adabiyot", "Tabiiy fan", "—", "—"],
+        ["Matematika", "Ingliz tili", "Ona tili", "Rus tili", "Informatika", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "6-D": [
+        ["Kelajak soati", "Texnologiya", "Texnologiya", "Ingliz tili", "Matematika", "Adabiyot", "—"],
+        ["Matematika", "Ingliz tili", "Tabiiy fan", "Informatika", "Jismoniy tarbiya", "Tasviriy san'at", "—"],
+        ["Matematika", "Tarix", "Tarbiya", "Ona tili", "Musiqa", "—", "—"],
+        ["Tabiiy fan", "Rus tili", "Ingliz tili", "Ona tili", "Adabiyot", "—", "—"],
+        ["Matematika", "Jismoniy tarbiya", "Musiqa", "Adabiyot", "—", "—"],
+        ["Ona tili", "Matematika", "Jismoniy tarbiya", "Tabiiy fan", "—", "—", "—"],
+        ["Ingliz tili", "Matematika", "Tarix", "Ona tili", "Rus tili", "—", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "7-A": [
+        ["Kelajak soati", "Matematika", "Ingliz tili", "Adabiyot", "Fizika", "Jismoniy tarbiya", "—"],
+        ["Ingliz tili", "Matematika", "Musiqa", "Biologiya", "Geografiya", "Informatika", "—"],
+        ["Tarbiya", "Ingliz tili  ", "Tarix", "Ona tili", "Matematika", "Rus tili", "—"],
+        ["Ona tili", "Tasviriy san'at", "Kimyo", "Jismoniy tarbiya", "Fizika", "Tarix", "—"],
+        ["Matematika", "Texnologiya", "Texnologiya", "Adabiyot", "Biologiya", "Rus tili"],
+        ["Ona tili", "Matematika", "Ingliz tili", "Tarix", "Kimyo", "Geografiya", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "7-B": [
+        ["Kelajak soati", "Adabiyot", "Matematika", "Texnologiya", "Texnologiya", "Rus tili", "—"],
+        ["Biologiya", "Fizika", "Geografiya", "Matematika", "Ingliz tili", "Tarix", "—"],
+        ["Tarix", "Matematika", "Ona tili", "Musiqa", "Jismoniy", "Ingliz tili", "—"],
+        ["Tasviriy san'at", "Ona tili", "Fizika", "Rus tili", "Kimyo", "Ingliz tili", "—"],
+        ["Tarbiya", "Adabiyot", "Matematika", "Biologiya", "Jismoniy tarbiya", "Informatika", "—"],
+        ["Tarix", "Ona tili", "Matematika", "Kimyo", "Geografiya", "Ingliz tili", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ],
+      "7-D": [
+        ["Kelajak soati", "Fizika", "Adabiyot", "Rus tili", "Matematika", "Ingliz tili"],
+        ["Tasviriy san'at", "Tarix", "Matematika", "Geografiya", "Biologiya", "Jismoniy tarbiya", "—"],
+        ["Ona tili", "tarbiya", "Ingliz tili", "Matematika", "Tarix", "Musiqa"], 
+        ["Fizika", "Kimyo", "Tarix", "Ingliz tili", "Ona tili", "Rus tili", "—"],
+        ["Adabiyot", "Matematika", "Biologiya", "Texnologiya", "Texnologiya", "Jismoniy tarbiya", "—"],
+        ["Geografiya", "Kimyo", "Ona tili", "Matematika", "Ingliz tili", "Informatika", "—"],
+        ["—", "—", "—", "—", "—", "—"]
+      ]
+    }
+  }
+}
