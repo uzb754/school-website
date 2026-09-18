@@ -1,10 +1,27 @@
 // src/context/DataContext.jsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
+
+// Firebase Sozlamalari
+const firebaseConfig = {
+  apiKey: "AIzaSyBERIFLd9yMyJHU3mDl5UGC2hr5hMjDXig",
+  authDomain: "maktab-269.firebaseapp.com",
+  databaseURL: "https://maktab-269-default-rtdb.firebaseio.com",
+  projectId: "maktab-269",
+  storageBucket: "maktab-269.firebasestorage.app",
+  messagingSenderId: "246317372987",
+  appId: "1:246317372987:web:993d778f63f9696ee66e1e",
+  measurementId: "G-FLK01YK4LF"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
 const DataContext = createContext();
 
 export function DataProvider({ children }) {
-  // Qorong'u rejim uchun state (localStorage'da saqlanadi)
+  // Qorong'u rejim (LocalStorage da qolaverishi mumkin)
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('269_darkMode') === 'true';
   });
@@ -20,65 +37,93 @@ export function DataProvider({ children }) {
 
   const toggleDarkMode = () => setDarkMode(prev => !prev);
 
-  // 1. Yangiliklar
-  const [newsList, setNewsList] = useState(() => {
-    const saved = localStorage.getItem('269_newsList');
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  // 2. Yutuqlar
-  const [winnersList, setWinnersList] = useState(() => {
-    const saved = localStorage.getItem('269_winnersList');
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  // 3. Tadbirlar
-  const [eventsList, setEventsList] = useState(() => {
-    const saved = localStorage.getItem('269_eventsList');
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  // 4. FAQ
-  const [faqs, setFaqs] = useState(() => {
-    const saved = localStorage.getItem('269_faqs');
-    return saved ? JSON.parse(saved) : [
-      { id: 1, q: "Maktabga qabul jarayoni qanday amalga oshiriladi?", a: "Qabul jarayoni my.maktab.uz portali orqali onlayn shaklda amalga oshiriladi." },
-      { id: 2, q: "Darslar soat nechada boshlanadi?", a: "Birinchi smena darslari 08:00 da, ikkinchi smena darslari 13:00 da boshlanadi." }
-    ];
-  });
-
+  // States for Firebase Data
+  const [newsList, setNewsListState] = useState([]);
+  const [winnersList, setWinnersListState] = useState([]);
+  const [eventsList, setEventsListState] = useState([]);
+  const [faqs, setFaqsState] = useState([]);
+  const [sliderMode, setSliderModeState] = useState('auto');
   const [selectedItem, setSelectedItem] = useState(null);
 
-  const [sliderMode, setSliderMode] = useState(() => {
-    return localStorage.getItem('269_sliderMode') || 'auto';
-  });
-
+  // Firebase'dan ma'lumotlarni real vaqt rejimida o'qib turish (Realtime sync)
   useEffect(() => {
-    localStorage.setItem('269_newsList', JSON.stringify(newsList));
-  }, [newsList]);
+    // News
+    const newsRef = ref(db, 'newsList');
+    onValue(newsRef, (snapshot) => {
+      const data = snapshot.val();
+      setNewsListState(data ? Object.values(data) : []);
+    });
 
-  useEffect(() => {
-    localStorage.setItem('269_winnersList', JSON.stringify(winnersList));
-  }, [winnersList]);
+    // Winners
+    const winnersRef = ref(db, 'winnersList');
+    onValue(winnersRef, (snapshot) => {
+      const data = snapshot.val();
+      setWinnersListState(data ? Object.values(data) : []);
+    });
 
-  useEffect(() => {
-    localStorage.setItem('269_eventsList', JSON.stringify(eventsList));
-  }, [eventsList]);
+    // Events
+    const eventsRef = ref(db, 'eventsList');
+    onValue(eventsRef, (snapshot) => {
+      const data = snapshot.val();
+      setEventsListState(data ? Object.values(data) : []);
+    });
 
-  useEffect(() => {
-    localStorage.setItem('269_faqs', JSON.stringify(faqs));
-  }, [faqs]);
+    // FAQs
+    const faqsRef = ref(db, 'faqs');
+    onValue(faqsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        setFaqsState(Object.values(data));
+      } else {
+        // Agar baza bo'sh bo'lsa boshlang'ich ma'lumot yozish
+        const initialFaqs = [
+          { id: 1, q: "Maktabga qabul jarayoni qanday amalga oshiriladi?", a: "Qabul jarayoni my.maktab.uz portali orqali onlayn shaklda amalga oshiriladi." },
+          { id: 2, q: "Darslar soat nechada boshlanadi?", a: "Birinchi smena darslari 08:00 da, ikkinchi smena darslari 13:00 da boshlanadi." }
+        ];
+        initialFaqs.forEach(faq => {
+          set(ref(db, `faqs/${faq.id}`), faq);
+        });
+      }
+    });
 
-  useEffect(() => {
-    localStorage.setItem('269_sliderMode', sliderMode);
-  }, [sliderMode]);
+    // Slider Mode
+    const sliderRef = ref(db, 'sliderMode');
+    onValue(sliderRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) setSliderModeState(data);
+    });
+  }, []);
 
-  const addFaq = (faq) => {
-    setFaqs(prev => [{ ...faq, id: Date.now() }, ...prev]);
+  // Ma'lumotlarni Firebase'ga yozish/yangilash funksiyalari
+  const setNewsList = async (newList) => {
+    // Agar massiv bo'lsa yoki funksiya kelsa
+    const list = typeof newList === 'function' ? newList(newsList) : newList;
+    await set(ref(db, 'newsList'), list);
   };
 
-  const deleteFaq = (id) => {
-    setFaqs(prev => prev.filter(item => item.id !== id));
+  const setWinnersList = async (newList) => {
+    const list = typeof newList === 'function' ? newList(winnersList) : newList;
+    await set(ref(db, 'winnersList'), list);
+  };
+
+  const setEventsList = async (newList) => {
+    const list = typeof newList === 'function' ? newList(eventsList) : newList;
+    await set(ref(db, 'eventsList'), list);
+  };
+
+  const addFaq = async (faq) => {
+    const id = Date.now();
+    const newFaqItem = { ...faq, id };
+    await set(ref(db, `faqs/${id}`), newFaqItem);
+  };
+
+  const deleteFaq = async (id) => {
+    await remove(ref(db, `faqs/${id}`));
+  };
+
+  const setSliderMode = async (mode) => {
+    await set(ref(db, 'sliderMode'), mode);
+    setSliderModeState(mode);
   };
 
   // TELEGRAM BOT INTEGRATSIYASI
@@ -95,16 +140,9 @@ export function DataProvider({ children }) {
     try {
       const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          chat_id: CHAT_ID,
-          text: text,
-          parse_mode: 'Markdown',
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: 'Markdown' }),
       });
-
       const data = await response.json();
       return data.ok;
     } catch (error) {

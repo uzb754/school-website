@@ -1,6 +1,6 @@
 // src/App.jsx
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { MapPin, Phone, Mail, Send, CheckCircle2 } from 'lucide-react';
 
 // Context Import
@@ -134,14 +134,11 @@ function AppContent() {
   );
 }
 
-// Asosiy App komponenti
+// Asosiy App komponenti (HashRouter bilan)
 export default function App() {
-  // GitHub Pages'da bo'lsa '/school-website', kompyuterda bo'lsa '' bo'ladi
-  const basename = window.location.hostname.includes('github.io') ? '/school-website' : '';
-
   return (
-    <BrowserRouter basename={basename}>
+    <Router>
       <AppContent />
-    </BrowserRouter>
+    </Router>
   );
 }

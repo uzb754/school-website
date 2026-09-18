@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { 
   Newspaper, Trophy, Calendar, LogOut, 
-  ShieldCheck, Trash2, Edit3, X, HelpCircle, Plus, Send, Image as ImageIcon, Sparkles, ChevronRight,
+  ShieldCheck, Trash2, Edit3, X, HelpCircle, Plus, Send, Image as ImageIcon, Sparkles, 
   Sliders, RefreshCw, Hand
 } from 'lucide-react';
 import { useData } from '../context/DataContext';
@@ -119,7 +119,7 @@ export default function Admin() {
     }
   };
 
-  // LOGIN PAGE (Apple Style Light)
+  // LOGIN PAGE
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-[#F5F5F7] flex items-center justify-center p-4">
@@ -169,7 +169,7 @@ export default function Admin() {
             </div>
             <div>
               <h1 className="text-xl font-bold text-slate-900 tracking-tight">Boshqaruv Paneli</h1>
-              <p className="text-xs text-slate-500">Tizim faol holistic sync</p>
+              <p className="text-xs text-slate-500">Firebase Cloud Sync Active 🚀</p>
             </div>
           </div>
           <button onClick={() => setIsAuthenticated(false)} className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 font-semibold text-xs rounded-2xl transition">
@@ -177,7 +177,7 @@ export default function Admin() {
           </button>
         </header>
 
-        {/* SLAYDER REJIMI SOZLAMASI (YANGI QO'SHILDI) */}
+        {/* SLAYDER REJIMI SOZLAMASI */}
         <div className="bg-white/70 backdrop-blur-xl p-5 rounded-3xl border border-white/80 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-blue-500/10 text-blue-600 rounded-2xl">
@@ -194,9 +194,7 @@ export default function Admin() {
               type="button"
               onClick={() => setSliderMode('auto')}
               className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                sliderMode === 'auto'
-                  ? 'bg-white text-blue-600 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-800'
+                sliderMode === 'auto' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-500 hover:text-slate-800'
               }`}
             >
               <RefreshCw className="w-3.5 h-3.5" /> Avto (Avtomatik)
@@ -205,9 +203,7 @@ export default function Admin() {
               type="button"
               onClick={() => setSliderMode('manual')}
               className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                sliderMode === 'manual'
-                  ? 'bg-white text-blue-600 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-800'
+                sliderMode === 'manual' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-500 hover:text-slate-800'
               }`}
             >
               <Hand className="w-3.5 h-3.5" /> Qo'lda (Strelkalar)
