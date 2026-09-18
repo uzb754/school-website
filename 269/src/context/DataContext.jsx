@@ -1,7 +1,7 @@
 // src/context/DataContext.jsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
+import { getDatabase, ref, onValue, set, remove } from "firebase/database";
 
 // Firebase Sozlamalari
 const firebaseConfig = {
@@ -21,7 +21,7 @@ const db = getDatabase(app);
 const DataContext = createContext();
 
 export function DataProvider({ children }) {
-  // Qorong'u rejim (LocalStorage da qolaverishi mumkin)
+  // Qorong'u rejim
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('269_darkMode') === 'true';
   });
@@ -45,27 +45,36 @@ export function DataProvider({ children }) {
   const [sliderMode, setSliderModeState] = useState('auto');
   const [selectedItem, setSelectedItem] = useState(null);
 
-  // Firebase'dan ma'lumotlarni real vaqt rejimida o'qib turish (Realtime sync)
+  // Yordamchi funksiya: Firebase ma'lumotlarini massivga xavfsiz o'girish
+  const parseFirebaseData = (data) => {
+    if (!data) return [];
+    if (Array.isArray(data)) {
+      return data.filter(item => item !== null && item !== undefined);
+    }
+    return Object.values(data).filter(item => item !== null && item !== undefined);
+  };
+
+  // Firebase'dan ma'lumotlarni real vaqt rejimida o'qib turish
   useEffect(() => {
     // News
     const newsRef = ref(db, 'newsList');
     onValue(newsRef, (snapshot) => {
       const data = snapshot.val();
-      setNewsListState(data ? Object.values(data) : []);
+      setNewsListState(parseFirebaseData(data));
     });
 
     // Winners
     const winnersRef = ref(db, 'winnersList');
     onValue(winnersRef, (snapshot) => {
       const data = snapshot.val();
-      setWinnersListState(data ? Object.values(data) : []);
+      setWinnersListState(parseFirebaseData(data));
     });
 
     // Events
     const eventsRef = ref(db, 'eventsList');
     onValue(eventsRef, (snapshot) => {
       const data = snapshot.val();
-      setEventsListState(data ? Object.values(data) : []);
+      setEventsListState(parseFirebaseData(data));
     });
 
     // FAQs
@@ -73,9 +82,8 @@ export function DataProvider({ children }) {
     onValue(faqsRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        setFaqsState(Object.values(data));
+        setFaqsState(parseFirebaseData(data));
       } else {
-        // Agar baza bo'sh bo'lsa boshlang'ich ma'lumot yozish
         const initialFaqs = [
           { id: 1, q: "Maktabga qabul jarayoni qanday amalga oshiriladi?", a: "Qabul jarayoni my.maktab.uz portali orqali onlayn shaklda amalga oshiriladi." },
           { id: 2, q: "Darslar soat nechada boshlanadi?", a: "Birinchi smena darslari 08:00 da, ikkinchi smena darslari 13:00 da boshlanadi." }
@@ -96,7 +104,6 @@ export function DataProvider({ children }) {
 
   // Ma'lumotlarni Firebase'ga yozish/yangilash funksiyalari
   const setNewsList = async (newList) => {
-    // Agar massiv bo'lsa yoki funksiya kelsa
     const list = typeof newList === 'function' ? newList(newsList) : newList;
     await set(ref(db, 'newsList'), list);
   };
@@ -130,7 +137,7 @@ export function DataProvider({ children }) {
   const BOT_TOKEN = "7683966754:AAE1eIMceOA4Dax5WGyy1Gp9ghRFFOinDhY";
   const CHAT_ID = "6053383227";
 
-  const sendToTelegram = async (feedbackData) => {
+ const sendToTelegram = async (feedbackData) => {
     const text = `📬 *Yangi Xabar (269-Maktab Saytidan)*\n\n` +
                  `👤 *Ism:* ${feedbackData.name}\n` +
                  `🎭 *Kimligi:* ${feedbackData.role}\n` +
@@ -145,7 +152,7 @@ export function DataProvider({ children }) {
       });
       const data = await response.json();
       return data.ok;
-    } catch (error) {
+    } catch (error) { // <-- To'g'ri yozilishi: else o'rniga catch ishlatildi
       console.error("Telegram yuborishda xatolik:", error);
       return false;
     }
