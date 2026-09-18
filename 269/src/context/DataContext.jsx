@@ -45,13 +45,13 @@ export function DataProvider({ children }) {
   const [sliderMode, setSliderModeState] = useState('auto');
   const [selectedItem, setSelectedItem] = useState(null);
 
-  // Yordamchi funksiya: Firebase ma'lumotlarini massivga xavfsiz o'girish
+  // 🔹 Muhim: Firebase'dan push qilingan obyektlarni ID lari bilan birga massivga o'giruvchi funksiya
   const parseFirebaseData = (data) => {
     if (!data) return [];
-    if (Array.isArray(data)) {
-      return data.filter(item => item !== null && item !== undefined);
-    }
-    return Object.values(data).filter(item => item !== null && item !== undefined);
+    return Object.keys(data).map(key => ({
+      id: key,
+      ...data[key]
+    }));
   };
 
   // Firebase'dan ma'lumotlarni real vaqt rejimida o'qib turish
@@ -102,22 +102,6 @@ export function DataProvider({ children }) {
     });
   }, []);
 
-  // Ma'lumotlarni Firebase'ga yozish/yangilash funksiyalari
-  const setNewsList = async (newList) => {
-    const list = typeof newList === 'function' ? newList(newsList) : newList;
-    await set(ref(db, 'newsList'), list);
-  };
-
-  const setWinnersList = async (newList) => {
-    const list = typeof newList === 'function' ? newList(winnersList) : newList;
-    await set(ref(db, 'winnersList'), list);
-  };
-
-  const setEventsList = async (newList) => {
-    const list = typeof newList === 'function' ? newList(eventsList) : newList;
-    await set(ref(db, 'eventsList'), list);
-  };
-
   const addFaq = async (faq) => {
     const id = Date.now();
     const newFaqItem = { ...faq, id };
@@ -137,7 +121,7 @@ export function DataProvider({ children }) {
   const BOT_TOKEN = "7683966754:AAE1eIMceOA4Dax5WGyy1Gp9ghRFFOinDhY";
   const CHAT_ID = "6053383227";
 
- const sendToTelegram = async (feedbackData) => {
+  const sendToTelegram = async (feedbackData) => {
     const text = `📬 *Yangi Xabar (269-Maktab Saytidan)*\n\n` +
                  `👤 *Ism:* ${feedbackData.name}\n` +
                  `🎭 *Kimligi:* ${feedbackData.role}\n` +
@@ -152,7 +136,7 @@ export function DataProvider({ children }) {
       });
       const data = await response.json();
       return data.ok;
-    } catch (error) { // <-- To'g'ri yozilishi: else o'rniga catch ishlatildi
+    } catch (error) {
       console.error("Telegram yuborishda xatolik:", error);
       return false;
     }
@@ -163,11 +147,8 @@ export function DataProvider({ children }) {
       darkMode,
       toggleDarkMode,
       newsList,
-      setNewsList,
       winnersList,
-      setWinnersList,
       eventsList,
-      setEventsList,
       faqs,
       addFaq,
       deleteFaq,
