@@ -6,6 +6,8 @@ import {
   Sliders, RefreshCw, Hand
 } from 'lucide-react';
 import { useData } from '../context/DataContext';
+import { ref, push, update, remove } from 'firebase/database';
+import { db } from '../firebase'; // Firebase bazasini ulaymiz
 
 export default function Admin() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,9 +18,9 @@ export default function Admin() {
   const SECRET_PASSWORD = 'Jaloliddin269';
 
   const { 
-    newsList, setNewsList, 
-    winnersList, setWinnersList, 
-    eventsList, setEventsList,
+    newsList, 
+    winnersList, 
+    eventsList, 
     faqs, addFaq, deleteFaq,
     sliderMode, setSliderMode
   } = useData();
@@ -65,49 +67,103 @@ export default function Admin() {
     setImagesCallback(updated);
   };
 
-  // Yangiliklar
-  const handleAddNews = (e) => {
+  // --- YANGILIKLAR (Firebase push / update / remove) ---
+  const handleAddNews = async (e) => {
     e.preventDefault();
     if (!newNews.title) return;
-    const item = { ...newNews, id: Date.now(), date: new Date().toISOString().split('T')[0] };
-    setNewsList([item, ...newsList]);
-    setNewNews({ title: '', desc: '', images: [] });
+    try {
+      await push(ref(db, 'newsList'), {
+        ...newNews,
+        date: new Date().toISOString().split('T')[0]
+      });
+      setNewNews({ title: '', desc: '', images: [] });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const handleUpdateNews = (e) => {
+  const handleUpdateNews = async (e) => {
     e.preventDefault();
-    setNewsList(newsList.map(item => item.id === editingNews.id ? editingNews : item));
-    setEditingNews(null);
+    if (!editingNews) return;
+    try {
+      const { id, ...updateData } = editingNews;
+      await update(ref(db, `newsList/${id}`), updateData);
+      setEditingNews(null);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  // Yutuqlar
-  const handleAddWinner = (e) => {
+  const handleDeleteNews = async (id) => {
+    try {
+      await remove(ref(db, `newsList/${id}`));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // --- YUTUQLAR ---
+  const handleAddWinner = async (e) => {
     e.preventDefault();
     if (!newWinner.title) return;
-    const item = { ...newWinner, id: Date.now() };
-    setWinnersList([item, ...winnersList]);
-    setNewWinner({ title: '', student: '', images: [] });
+    try {
+      await push(ref(db, 'winnersList'), newWinner);
+      setNewWinner({ title: '', student: '', images: [] });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const handleUpdateWinner = (e) => {
+  const handleUpdateWinner = async (e) => {
     e.preventDefault();
-    setWinnersList(winnersList.map(item => item.id === editingWinner.id ? editingWinner : item));
-    setEditingWinner(null);
+    if (!editingWinner) return;
+    try {
+      const { id, ...updateData } = editingWinner;
+      await update(ref(db, `winnersList/${id}`), updateData);
+      setEditingWinner(null);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  // Tadbirlar
-  const handleAddEvent = (e) => {
+  const handleDeleteWinner = async (id) => {
+    try {
+      await remove(ref(db, `winnersList/${id}`));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // --- TADBIRLAR ---
+  const handleAddEvent = async (e) => {
     e.preventDefault();
     if (!newEvent.title) return;
-    const item = { ...newEvent, id: Date.now() };
-    setEventsList([item, ...eventsList]);
-    setNewEvent({ title: '', date: '', location: '', images: [] });
+    try {
+      await push(ref(db, 'eventsList'), newEvent);
+      setNewEvent({ title: '', date: '', location: '', images: [] });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const handleUpdateEvent = (e) => {
+  const handleUpdateEvent = async (e) => {
     e.preventDefault();
-    setEventsList(eventsList.map(item => item.id === editingEvent.id ? editingEvent : item));
-    setEditingEvent(null);
+    if (!editingEvent) return;
+    try {
+      const { id, ...updateData } = editingEvent;
+      await update(ref(db, `eventsList/${id}`), updateData);
+      setEditingEvent(null);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteEvent = async (id) => {
+    try {
+      await remove(ref(db, `eventsList/${id}`));
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   // FAQ
@@ -324,7 +380,7 @@ export default function Admin() {
                         </div>
                         <div className="flex gap-2">
                           <button onClick={() => setEditingNews(item)} className="p-2.5 bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-100 transition"><Edit3 className="w-4 h-4" /></button>
-                          <button onClick={() => setNewsList(newsList.filter(n => n.id !== item.id))} className="p-2.5 bg-rose-50 text-rose-600 rounded-xl hover:bg-rose-100 transition"><Trash2 className="w-4 h-4" /></button>
+                          <button onClick={() => handleDeleteNews(item.id)} className="p-2.5 bg-rose-50 text-rose-600 rounded-xl hover:bg-rose-100 transition"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       </div>
                     ))}
@@ -414,7 +470,7 @@ export default function Admin() {
                         </div>
                         <div className="flex gap-2">
                           <button onClick={() => setEditingWinner(item)} className="p-2.5 bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-100"><Edit3 className="w-4 h-4" /></button>
-                          <button onClick={() => setWinnersList(winnersList.filter(w => w.id !== item.id))} className="p-2.5 bg-rose-50 text-rose-600 rounded-xl hover:bg-rose-100"><Trash2 className="w-4 h-4" /></button>
+                          <button onClick={() => handleDeleteWinner(item.id)} className="p-2.5 bg-rose-50 text-rose-600 rounded-xl hover:bg-rose-100"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       </div>
                     ))}
@@ -510,7 +566,7 @@ export default function Admin() {
                         </div>
                         <div className="flex gap-2">
                           <button onClick={() => setEditingEvent(item)} className="p-2.5 bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-100"><Edit3 className="w-4 h-4" /></button>
-                          <button onClick={() => setEventsList(eventsList.filter(ev => ev.id !== item.id))} className="p-2.5 bg-rose-50 text-rose-600 rounded-xl hover:bg-rose-100"><Trash2 className="w-4 h-4" /></button>
+                          <button onClick={() => handleDeleteEvent(item.id)} className="p-2.5 bg-rose-50 text-rose-600 rounded-xl hover:bg-rose-100"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       </div>
                     ))}
